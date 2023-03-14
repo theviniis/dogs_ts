@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { useForm } from '../../hooks';
+import { Button } from '../elements';
 import { Input } from '../Input';
 import * as S from './LoginForm.styles';
 
 export const LoginForm = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const username = useForm('email');
+  const password = useForm('password');
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -24,17 +26,9 @@ export const LoginForm = () => {
     <S.LoginForm>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-        <Input
-          label='Usuário'
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <Input
-          label='Senha'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button>Enviar</button>
+        <Input label='Usuário' type='text' {...username} />
+        <Input label='Senha' type='password' {...password} />
+        <Button>Enviar</Button>
       </form>
       <Link to='/login/criar'>Cadastro</Link>
     </S.LoginForm>

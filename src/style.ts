@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
+  :root {
+      --type-first: Helvetica, Arial, sans-serif;
+      --type-second: 'Spectral', Georgia;
+  }
  * {
     box-sizing: border-box;
     margin: 0;
@@ -10,8 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
   }
   body {
-    --type-first: Helvetica, Arial, sans-serif;
-    --type-second: 'Spectral', Georgia;
+  
     margin-block-start: 4rem;
     color: #333;
     font-family: var(--type-first);
@@ -23,7 +26,7 @@ export const GlobalStyle = createGlobalStyle`
     display: block;
     max-width: 100%;
   }
-  button, input {
+  button, input, label {
     display: block;
     font-size: 1rem;
     font-family: var(--type-first);

@@ -13,9 +13,12 @@ export const Label = styled.label`
 export const Input = styled.input<
   Pick<InputProps, 'hasError' | 'supportingText'>
 >`
-  border: 1px solid;
+  border-width: ${({ theme }) => theme.border.width.xsmall}px;
+  border-style: solid;
   border-color: ${({ hasError }) => (hasError ? '#f31' : '#eee')};
   width: 100%;
+  padding-inline: ${({theme}) => };
+
   padding-inline: 0.8rem;
   border-radius: 0.4rem;
   background-color: #eee;

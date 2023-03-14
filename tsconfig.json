@@ -21,5 +21,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": ["src", "types", "custom.d.ts"]
+  "include": [
+    "src",
+    "types",
+    "custom.d.ts",
+    "src/components/LoginPasswordLost/LoginPasswordLost.styles.ts"
+  ]
 }

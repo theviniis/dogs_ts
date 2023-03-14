@@ -1,5 +1,21 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import {
+  LoginCreate,
+  LoginForm,
+  LoginPasswordLost,
+  LoginPasswordReset,
+} from '../../components';
 
 export const Login = () => {
-  return <div>Login</div>;
+  return (
+    <div>
+      <Routes>
+        <Route path='/' element={<LoginForm />} />
+        <Route path='criar' element={<LoginCreate />} />
+        <Route path='perdeu' element={<LoginPasswordLost />} />
+        <Route path='resetar' element={<LoginPasswordReset />} />
+      </Routes>
+    </div>
+  );
 };

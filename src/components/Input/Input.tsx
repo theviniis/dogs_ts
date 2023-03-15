@@ -1,14 +1,16 @@
 import React from 'react';
 import * as S from './Input.styles';
+import { SkinsProps } from '../../shared';
 
 export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   label?: string;
   value?: string;
   type?: string;
   name?: string;
-  hasError?: boolean;
+  skin?: SkinsProps;
   supportingText?: string;
   required?: boolean;
+  disabled?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement, Element>) => void;
 }
@@ -16,14 +18,15 @@ export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
 export const Input: React.FC<InputProps> = ({
   label,
   id,
+  skin,
   name = 'input',
   type = 'text',
   supportingText,
-  hasError = false,
   required = false,
   value,
   onChange,
   onBlur,
+  disabled = false,
   ...props
 }) => {
   const inputName = `${name}-${crypto.randomUUID()}`;
@@ -36,16 +39,17 @@ export const Input: React.FC<InputProps> = ({
         name={name ?? inputName}
         type={type}
         value={value}
-        hasError={hasError}
         required={required}
         supportingText={supportingText}
         aria-describedby={supportingTextId}
         onChange={onChange}
         onBlur={onBlur}
+        skin={skin}
+        disabled={disabled}
         {...props}
       />
       {supportingText && (
-        <S.SupportingText id={supportingTextId} hasError={hasError}>
+        <S.SupportingText id={supportingTextId} skin={skin}>
           {supportingText}
         </S.SupportingText>
       )}

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { getTypographyStyles } from './components';
 
 export const GlobalStyle = createGlobalStyle`
   :root {
@@ -14,10 +15,10 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
   }
   body {
-  
     margin-block-start: 4rem;
-    color: #333;
-    font-family: var(--type-first);
+    color: ${({ theme }) => theme.colors.foreground};
+    background-color: ${({ theme }) => theme.colors.background};
+    ${getTypographyStyles('p1')};
   }
   ul, li {
     list-style: none;

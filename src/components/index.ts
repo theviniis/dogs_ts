@@ -6,3 +6,4 @@ export * from './LoginCreate';
 export * from './LoginPasswordReset';
 export * from './LoginPasswordLost';
 export * from './Input';
+export * from './Typography';

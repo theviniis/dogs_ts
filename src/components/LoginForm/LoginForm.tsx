@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from '../../hooks';
-import { Button } from '../elements';
-import { Input } from '../Input';
+import { Button, H4, Input } from '../';
 import * as S from './LoginForm.styles';
 
 export const LoginForm = () => {
@@ -24,11 +23,21 @@ export const LoginForm = () => {
 
   return (
     <S.LoginForm>
-      <h1>Login</h1>
+      <H4>Login</H4>
       <form onSubmit={handleSubmit}>
-        <Input label='Usuário' type='text' {...username} />
-        <Input label='Senha' type='password' {...password} />
-        <Button>Enviar</Button>
+        <Input
+          {...username}
+          label='Usuário'
+          type='text'
+          skin={username.hasError ? 'error' : 'neutral'}
+        />
+        <Input
+          {...password}
+          label='Senha'
+          type='password'
+          skin={password.hasError ? 'error' : 'neutral'}
+        />
+        <Button skin='primary'>Enviar</Button>
       </form>
       <Link to='/login/criar'>Cadastro</Link>
     </S.LoginForm>

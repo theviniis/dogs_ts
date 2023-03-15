@@ -1,44 +1,44 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import User from '../../assets/usuario.svg';
 import { Container } from '../elements';
+import { ReactComponent as UserImg } from '../../assets/usuario.svg';
 
 export const Header = styled.header`
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  ${({ theme }) =>
+    `box-shadow: 0 ${theme.border.width.xs}px 0 ${theme.colors.neutral[200]}`};
   position: fixed;
   width: 100%;
   z-index: 100;
-  background-color: #fff;
   top: 0;
-  a,
-  svg {
-    color: #333;
-    fill: #333;
-  }
 `;
 
 export const Nav = styled(Container)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 4rem;
+  height: ${({ theme }) => theme.spacing.xxxlg}rem;
 `;
 
 export const Logo = styled(Link)`
-  padding: 0.5rem 0;
+  all: unset;
+  cursor: pointer;
+  padding: ${({ theme }) => theme.spacing.xxs}rem 0;
+  transition: fill ease-in-out 150ms;
+  svg * {
+    fill: ${({ theme }) => theme.colors.foreground};
+  }
 `;
 
 export const Login = styled(Link)`
   display: flex;
+  display: flex;
   align-items: center;
-  &::after {
-    content: '';
-    display: inline-block;
-    width: 14px;
-    height: 17px;
-    margin-left: 0.5rem;
-    background: url(${User}) no-repeat center center;
-    position: relative;
-    top: -1px;
-  }
+  gap: ${({ theme }) => theme.spacing.xxs}rem;
+  background: transparent;
+`;
+
+export const User = styled(UserImg)`
+  aspect-ratio: 1;
+  width: 14px;
+  position: relative;
 `;

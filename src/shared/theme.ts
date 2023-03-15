@@ -7,7 +7,7 @@ export const typography = {
   },
   weight: {
     regular: '400',
-    medium: '500',
+    md: '500',
     semiBold: '600',
     bold: '700',
   },
@@ -36,8 +36,7 @@ export const typography = {
 
 export const colors = {
   neutral: {
-    white: '#FFF',
-    black: '#000',
+    DEFAULT: '#404040',
     50: '#fafafa',
     100: '#f4f4f4',
     200: '#e6e6e6',
@@ -119,47 +118,50 @@ export const colors = {
       background: linear-gradient(225deg, #23CCEB 0%, #FEDB4D 100%);
     `,
   },
-} as const;
+};
 
 export const spacing = {
-  nano: 4,
-  xsmall: 8,
-  small: 16,
-  medium: 24,
-  large: 32,
-  xlarge: 40,
+  xxxs: 0.25,
+  xxs: 0.5,
+  xs: 1,
+  sm: 1.5,
+  md: 2,
+  lg: 2.5,
+  xlg: 3,
+  xxlg: 3.5,
+  xxxlg: 4,
 } as const;
 
 export const border = {
   radius: {
-    xsmall: 4,
-    small: 8,
-    medium: 16,
-    large: 24,
+    xs: 4,
+    sm: 8,
+    md: 16,
+    lg: 24,
     pill: 500,
     circular: '50%',
   },
   width: {
-    xsmall: 1,
-    small: 2,
-    medium: 4,
-    large: 8,
+    xs: 1,
+    sm: 2,
+    md: 4,
+    lg: 8,
   },
 } as const;
 
 export const breakpoints = {
-  xsmall: {
+  xs: {
     columns: 4,
   },
-  small: {
+  sm: {
     width: 600,
     columns: 8,
   },
-  medium: {
+  md: {
     width: 1024,
     columns: 12,
   },
-  large: {
+  lg: {
     width: 1440,
     columns: 12,
   },
@@ -220,25 +222,93 @@ export const theme = {
 } as const;
 
 export const lightTheme: DefaultTheme = {
+  scheme: 'light',
   colors: {
-    background: '#fff',
-    foreground: '#000',
     ...colors,
+    background: '#fff',
+    foreground: '#333',
   },
   ...theme,
 } as const;
 
 export const darkTheme: DefaultTheme = {
+  scheme: 'dark',
   colors: {
-    background: '#000',
-    foreground: '#fff',
     ...colors,
+    background: '#181818',
+    foreground: '#f4f4f4',
+    neutral: {
+      DEFAULT: '#f4f4f4',
+      50: '#181818',
+      100: '#272727',
+      200: '#404040',
+      300: '#535353',
+      400: '#727272',
+      500: '#a2a2a2',
+      600: '#d4d4d4',
+      700: '#e6e6e6',
+      800: '#f4f4f4',
+      900: '#fafafa',
+    },
+    primary: {
+      DEFAULT: '#03a9f4',
+      50: '#104a6f',
+      100: '#0c5987',
+      200: '#086aa5',
+      300: '#0486ce',
+      400: '#03a9f4',
+      500: '#3fc0ff',
+      600: '#85d6ff',
+      700: '#bfe8ff',
+      800: '#e2f3ff',
+      900: '#f0f9ff',
+    },
+    secondary: {
+      DEFAULT: '#673ab7',
+      50: '#4e228e',
+      100: '#673ab7',
+      200: '#7740de',
+      300: '#8a4ffb',
+      400: '#9e70ff',
+      500: '#b899ff',
+      600: '#d4c3ff',
+      700: '#e8dfff',
+      800: '#f2edff',
+      900: '#f8f6ff',
+    },
+    success: {
+      DEFAULT: '#8bc34a',
+      50: '#365313',
+      100: '#406118',
+      200: '#507921',
+      300: '#6a9d32',
+      400: '#8bc34a',
+      500: '#a7de59',
+      600: '#bfec75',
+      700: '#d9f5a2',
+      800: '#ebfacc',
+      900: '#f7fee7',
+    },
+    error: {
+      DEFAULT: '#f44336',
+      50: '#7f1e16',
+      100: '#9a1c0f',
+      200: '#bb1c06',
+      300: '#df250d',
+      400: '#f44336',
+      500: '#fc7269',
+      600: '#ffa6a1',
+      700: '#ffcbc9',
+      800: '#ffe3e1',
+      900: '#fef2f1',
+    },
   },
   ...theme,
 } as const;
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    scheme: 'light' | 'dark';
     spacing: typeof spacing;
     breakpoints: typeof breakpoints;
     zIndex: typeof zIndex;
@@ -249,7 +319,3 @@ declare module 'styled-components' {
     typography: typeof typography;
   }
 }
-
-// declare module 'styled-components' {
-//   export interface DefaultTheme extends CustomTheme {}
-// }

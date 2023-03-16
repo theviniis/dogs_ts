@@ -1,58 +1,56 @@
 import React from 'react';
 import * as S from './Input.styles';
-import { SkinsProps } from '../../shared';
+import * as T from './Input.types';
 
-export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
-  label?: string;
-  value?: string;
-  type?: string;
-  name?: string;
-  skin?: SkinsProps;
-  supportingText?: string;
-  required?: boolean;
-  disabled?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlur?: (e: React.FocusEvent<HTMLInputElement, Element>) => void;
-}
-
-export const Input: React.FC<InputProps> = ({
+export const Input: React.FC<T.InputProps> = ({
   label,
-  id,
-  skin,
+  supportingText,
+  id = 'input-id',
   name = 'input',
   type = 'text',
-  supportingText,
+  placeholder,
   required = false,
-  value,
+  disabled = false,
+  value = '',
   onChange,
   onBlur,
-  disabled = false,
+  errorMessage,
+  startIcon,
+  endIcon,
   ...props
 }) => {
-  const inputName = `${name}-${crypto.randomUUID()}`;
-  const supportingTextId = inputName + '-supporting-text';
   return (
-    <S.Wrapper>
+    <S.InputWrapper>
       <S.Label htmlFor={name}>{label}</S.Label>
       <S.Input
-        id={id ?? inputName}
-        name={name ?? inputName}
+        id={id}
+        name={name}
         type={type}
         value={value}
         required={required}
         supportingText={supportingText}
-        aria-describedby={supportingTextId}
+        aria-describedby={id + '-supporting-text'}
         onChange={onChange}
         onBlur={onBlur}
-        skin={skin}
         disabled={disabled}
+        placeholder={placeholder}
         {...props}
       />
-      {supportingText && (
-        <S.SupportingText id={supportingTextId} skin={skin}>
-          {supportingText}
-        </S.SupportingText>
+      {(supportingText || errorMessage) && (
+        <S.MessagesWrapper>
+          {supportingText && (
+            <S.SupportingText id={id + '-supporting-text'}>
+              {supportingText}
+            </S.SupportingText>
+          )}
+        </S.MessagesWrapper>
       )}
-    </S.Wrapper>
+      {(startIcon || endIcon) && (
+        <S.IconsWrapper>
+          {startIcon && <span id={id + '-start-icon'}>{startIcon}</span>}
+          {endIcon && <span id={id + '-end-icon'}>{endIcon}</span>}
+        </S.IconsWrapper>
+      )}
+    </S.InputWrapper>
   );
 };

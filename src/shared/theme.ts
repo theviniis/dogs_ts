@@ -36,7 +36,8 @@ export const typography = {
 
 export const colors = {
   neutral: {
-    DEFAULT: '#404040',
+    white: '#fafafa',
+    black: '#333333',
     50: '#fafafa',
     100: '#f4f4f4',
     200: '#e6e6e6',
@@ -44,7 +45,7 @@ export const colors = {
     400: '#a2a2a2',
     500: '#727272',
     600: '#535353',
-    700: '#404040',
+    700: '#333333',
     800: '#272727',
     900: '#181818',
   },
@@ -238,7 +239,7 @@ export const darkTheme: DefaultTheme = {
     background: '#181818',
     foreground: '#f4f4f4',
     neutral: {
-      DEFAULT: '#f4f4f4',
+      ...colors.neutral,
       50: '#181818',
       100: '#272727',
       200: '#404040',

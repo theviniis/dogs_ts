@@ -1,7 +1,6 @@
 import React from 'react';
 import * as S from './Header.styles';
 import { ReactComponent as Dogs } from '../../assets/dogs.svg';
-import { Button } from '../elements';
 
 export const Header = () => {
   return (
@@ -11,10 +10,8 @@ export const Header = () => {
           <Dogs />
         </S.Logo>
         <S.Login to='/login'>
-          <Button variant='ghost'>
-            Login / Criar
-            <S.User />
-          </Button>
+          Login / Criar
+          <S.User />
         </S.Login>
       </S.Nav>
     </S.Header>

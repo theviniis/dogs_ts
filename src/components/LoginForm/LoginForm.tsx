@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useForm } from '../../hooks';
 import { Button, H4, Input } from '../';
 import * as S from './LoginForm.styles';
+import { Icon } from '../elements/Icon';
 
 export const LoginForm = () => {
   const username = useForm('email');
@@ -29,15 +30,17 @@ export const LoginForm = () => {
           {...username}
           label='Usuário'
           type='text'
-          skin={username.hasError ? 'error' : 'neutral'}
+          supportingText='Texto de suporte'
         />
         <Input
           {...password}
           label='Senha'
           type='password'
-          skin={password.hasError ? 'error' : 'neutral'}
+          errorMessage='Este é um erro'
+          startIcon={<Icon />}
+          endIcon={<Icon />}
         />
-        <Button skin='primary'>Enviar</Button>
+        <Button>Enviar</Button>
       </form>
       <Link to='/login/criar'>Cadastro</Link>
     </S.LoginForm>

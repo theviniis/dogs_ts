@@ -2,10 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 import { getTypographyStyles } from './components';
 
 export const GlobalStyle = createGlobalStyle`
-  :root {
-      --type-first: Helvetica, Arial, sans-serif;
-      --type-second: 'Spectral', Georgia;
-  }
  * {
     box-sizing: border-box;
     margin: 0;
@@ -29,8 +25,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   button, input, label {
     display: block;
-    font-size: 1rem;
-    font-family: var(--type-first);
+    font: inherit;
   }
   a {
     text-decoration: none;

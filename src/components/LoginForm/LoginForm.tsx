@@ -40,7 +40,9 @@ export const LoginForm = () => {
           startIcon={<Icon />}
           endIcon={<Icon />}
         />
-        <Button>Enviar</Button>
+        <Button skin='secondary' variant='ghost'>
+          Enviar
+        </Button>
       </form>
       <Link to='/login/criar'>Cadastro</Link>
     </S.LoginForm>
